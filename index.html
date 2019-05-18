@@ -1,18 +1,31 @@
+<link rel="stylesheet" type="text/css" href="./assets/static.scss">
+
 <!DOCTYPE html>
+
+<div class ='title-container'>
+    <h1 class="title">Who Hooped?</h1>
+</div>
 
 <div class="player-container" id="chart"><svg></svg></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
-<script src="./src/bubble.js"></script>
+
+<!-- line 7 is a place holder that will be used to display 
+    the return value of  .datum(player_data).call(bubbleChart)
+-->
+
+<body>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+    <script src="./src/bubble.js"></script>
+    <script src="./src/tool_tip.js"></script>
+
 <script>
+    var bubbleChart = createBubbleChart(590,740);
 
     d3.csv('../data/player_rank.csv', function (error, player_data) {
-        var chart = bubbleChart(600,900);
-        d3.select('#chart').datum(player_data).call(chart);
-        //d3.select passes in data to chart 
-        //datum.(player_data) uses the player data to pass in 
-        //it gets called with the chart function that is returned from line 10
-        //if line 11 was written after line 11, this would not work
+        d3.select('#chart').datum(player_data).call(bubbleChart);
     });
-
 </script>
+
+</body>
+
