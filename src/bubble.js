@@ -2,7 +2,7 @@
 function createBubbleChart(width,height) {
 
     function createBubbles(chart) {
-        const bubbleColor = "Player"
+        const bubbleColor = "Pos"
         //sets bubble color to player position
         const bubbleRadius = "PTS";
         //sets radii of circles proportional to total points scored
@@ -40,7 +40,7 @@ function createBubbleChart(width,height) {
                 });
         }
 
-        const colorCircles = d3.scaleOrdinal(d3.schemeCategory20b);
+        const colorCircles = d3.scaleOrdinal(d3.schemeCategory20);
         const scaleRadius = d3.scaleLinear().domain([d3.min(player_data, function (d) {
             return +d[bubbleRadius];
         }), d3.max(player_data, function (d) {
@@ -58,12 +58,17 @@ function createBubbleChart(width,height) {
                 return colorCircles(d[bubbleColor])
             })
             .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
+            //that will cluster the circles in the middle of the x-y plane
             .on("mouseover", function (d) {
-                tooltip.html(d[bubbleColor] + "<br>" + d.title + "<br>" + d[bubbleRadius] + " hearts");
+                tooltip.html(d.Player + "<br>" + "Position: " + d.Pos + "<br>" 
+                    + "PPG: " + (d.PTS / d.G).toFixed(2) + "<br>" + "RPG: " + 
+                    (d.TRB / d.G).toFixed(2) + "<br>" + "APG: " +
+                    (d.AST / d.G).toFixed(2) + "<br>" + "Team: " + d.Tm
+                );
                 return tooltip.style("visibility", "visible");
             })
             .on("mousemove", function () {
-                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                return tooltip.style("top", (d3.event.pageY - 40) + "px").style("left", (d3.event.pageX + 10) + "px");
             })
             .on("mouseout", function () {
                 return tooltip.style("visibility", "hidden");
