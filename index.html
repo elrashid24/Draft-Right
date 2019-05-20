@@ -2,12 +2,18 @@
 
 <!DOCTYPE html>
 
-<div class ='title-container'>
-    <h1 class="title">Who Hooped?</h1>
+<h1 class="title">Draft Right</h1>
+<div class ='chart'>
+    
+    <div class="player-container" id="chart"><svg></svg>
+    <div>
+        <button class="combine" id="Combine">Combine</button>
+        <button class="ranking" id="Ranking">Split By Ranking</button>
+    </div>
+    </div>
 </div>
     
- <div class="player-container" id="chart"><svg></svg></div>
- <button class="player-container" id="chart"><svg></svg></button>
+ <!-- <button class="player-container" id="chart"><svg></svg></button> -->
  
 
 <!-- line 7 is a place holder that will be used to display 
@@ -20,10 +26,10 @@
     <script src="./src/tool_tip.js"></script>
 
 <script>
-    var bubbleChart = createBubbleChart(900,500);
+    // var bubbleChart = createBubbleChart(00,500);
 
-    d3.csv('../data/player_rank.csv', function (error, player_data) {
-        d3.select('#chart').datum(player_data).call(createBubbleChart(1000, 1000));
+    d3.csv('../data/fantasy_football.csv', function (error, player_data) {
+        d3.select('#chart').datum(player_data).call(createBubbleChart(1200, 800));
     });
 </script>
 

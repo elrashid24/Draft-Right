@@ -1,10 +1,11 @@
 //this file is similar to planting a garden of circles
  function createBubbleChart(width,height) {
+// Pos
 
     function createBubbles(chart) {
-        const bubbleColor = "Player"
+        const bubbleColor = "Position"
         //sets bubble color to player position
-        const bubbleRadius = "PTS";
+        const bubbleRadius = "Rank";
         //sets radii of circles proportional to total points scored
         //the radii will be scaled linearl ranging form highest point total
         //to lowest point total, based on range specified in const scaleRadius
@@ -28,29 +29,45 @@
             .style("width", "200px")
             .text("");
             
-        const scaleRadius = d3.scaleSqrt().domain([900,2818]).range([10,90]) 
+        const scaleRadius = d3.scaleSqrt().domain([51,1]).range([1,50]) 
         
         //widith is vertical down the page
-        var forceX = d3.forceX(function(d) {
-            if(d.Rk <10){
-                return 250
-            }else {
-                return 550
-            }
-            }).strength(0.05)
-       
+        var forceX = d3.forceX(width / 2).strength(0.05)
+        var forceY = d3.forceY(height / 2).strength(0.05)
         var forceCollide = d3.forceCollide(function(d){
-            return scaleRadius(d.PTS) + 1
+            return scaleRadius(d.Rank) + 3
         });
+        var forceRanks = d3.forceX(function(d){
+            if(d.Rank <= 10){
+                return 200
+            } else if (d.Rank > 10 && d.Rank < 21){
+                return 500
+            } else if (d.Rank >= 21 && d.Rank < 31){
+                return 750
+            } else if (d.Rank >= 31 && d.Rank < 41){
+                return 900
+            } else {
+                return 1100
+            }
+        })
+        //.strength(1.5)
+        // var forceTopTwenty = d3.forceX(function(d){
+        //     if(d.Rank > 10 && d.Rank < 21){
+        //         return 600
+        //     }else {
+        //         return 500
+        //     }
+        // }).strength(2)
+        
         const simulation = d3.forceSimulation(player_data)
         //force simulation is a module that uses .force on 
         //each circle getting them to go to a certain place
         //forceSimulation updates the position of each node @ some time interval
         //in this case on "Tick"
-            .force("charge", d3.forceManyBody().strength([70]))
+            // .force("charge", d3.forceManyBody().strength([5]))
             .force("x", forceX)
             //height is horizontal across the    page
-            .force("y", d3.forceY(height/2).strength(0.05))
+            .force("y", forceY)
             .on("tick", ticked)
             .force("collide", forceCollide);
             //force collide takes in the radius of the area you want the collision to avoid
@@ -78,24 +95,45 @@
                 console.log(d)
             })
             .attr('r', function(d){
-                return scaleRadius(d.PTS)
+                return scaleRadius(d.Rank)
             })
             .style("fill", function (d) {
                 return colorCircles(d[bubbleColor])
             })
-            // d3.select("#combine").on('click', function(){
-            //     console.log("This Button Works")
+            d3.select("#Ranking").on('click', function(){
+                simulation.force("x", forceRanks)
+                .alphaTarget(.85)
+                // .restart()
+                console.log("10 button works")
+            })
+            // d3.select("#top_twenty").on('click', function(){
+            //     simulation.force("x", forceTopTwenty)
+            //     console.log("20 button works")
             // })
-            // d3.select("#position").on('click', function(){
-            //     console.log("This Other Button Works")
-            // })
+            d3.select("#Combine").on('click', function(){
+                simulation
+                .force("x", d3.forceY(width/2).strength(0.05))
+                .force("x", d3.forceX(width/2).strength(0.05))
+                // .force("y", d3.forceX(height/1.5)).strength(0.05)
+                .alphaTarget(1.2)
+                // .restart(forceX)
+                // .restart(forceY)
+                console.log("This Other Button Works")
+                
+            })
             // .attr('transform', 'translate(' + [width / 2, height / 2] + ')')
             //that will cluster the circles in the middle of the x-y plane
-            .on("mouseover", function (d) {
-                tooltip.html(d.Player + "<br>" + "Position: " + d.Pos + "<br>" 
-                    + "PPG: " + (d.PTS / d.G).toFixed(2) + "<br>" + "RPG: " + 
-                    (d.TRB / d.G).toFixed(2) + "<br>" + "APG: " +
-                    (d.AST / d.G).toFixed(2) + "<br>" + "Team: " + d.Tm
+
+
+        // Rank	Name	Team	Position	Bye	Best	Worst	Avg	Std Dev	ADP
+            
+        .on("mouseover", function (d) {
+                tooltip.html(d.Name + "<br>" + "Rank: " + d.Rank + "<br>" 
+                     + "Position: " + d.Position + "<br>" 
+                     + "Team: " + d.Team + "<br>" 
+                     + "Bye: " + d.Bye + "<br>" 
+                     + "Ceiling: " + d.Best + "<br>" 
+                     + "Expert Floor: " + d.Worst + "<br>" 
                 );
                 return tooltip.style("visibility", "visible");
             })

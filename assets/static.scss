@@ -1,6 +1,6 @@
 .title{
     font-style: italic;
-    font-size: 40px;
+    font-size: 70px;
     position: fixed; /* or absolute */
     // top: 50%;
     left: 38%;
@@ -8,10 +8,31 @@
 
 }
 
-// .player-container{
-//     position: relative; /* or absolute */
-//     top: 2%;
-//     left: 19%;
-//     bottom: 20%;
-// }
+.player-container{
+    position: flex; /* or absolute */
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    // top: 2%;
+    // left: 19%;
+    // bottom: 20%;
+}
+
+.ranking {
+color: #fff ;
+text-transform: uppercase;
+background: gray;
+padding: 20px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+}
+
+.combine{
+color: #fff;
+text-transform: uppercase;
+background:navy;
+padding: 20px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+}
 
