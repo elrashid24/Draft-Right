@@ -102,7 +102,7 @@
             })
             d3.select("#Ranking").on('click', function(){
                 simulation.force("x", forceRanks)
-                .alphaTarget(.85)
+                .alphaTarget(1.2)
                 // .restart()
                 console.log("10 button works")
             })
@@ -112,11 +112,11 @@
             // })
             d3.select("#Combine").on('click', function(){
                 simulation
-                .force("x", d3.forceY(width/2).strength(0.05))
+                // .force("xY, d3.forceY(width/2).strength(0.05))
                 .force("x", d3.forceX(width/2).strength(0.05))
                 // .force("y", d3.forceX(height/1.5)).strength(0.05)
-                .alphaTarget(1.2)
-                // .restart(forceX)
+                .alphaTarget(.05)
+                .restart(forceX)
                 // .restart(forceY)
                 console.log("This Other Button Works")
                 
