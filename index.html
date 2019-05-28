@@ -9,6 +9,10 @@
     <div>
         <button class="combine" id="Combine">Combine</button>
         <button class="ranking" id="Ranking">Split By Ranking</button>
+        <button class="best" id="Best">Split By Ceiling</button>
+        <button class="worst" id="Worst">Split By Floor</button>
+        <button class="position" id="Position">Split By Position </button>
+        <div class="tooltip" id = "ToolTip"></div>
     </div>
     </div>
 </div>
@@ -29,7 +33,7 @@
     // var bubbleChart = createBubbleChart(00,500);
 
     d3.csv('../data/fantasy_football.csv', function (error, player_data) {
-        d3.select('#chart').datum(player_data).call(createBubbleChart(1200, 800));
+        d3.select('#chart').datum(player_data).call(createBubbleChart(2000, 800));
     });
 </script>
 

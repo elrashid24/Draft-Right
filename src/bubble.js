@@ -17,7 +17,7 @@
         ;
         const player_data = chart.datum();
         //chart.datum binds 
-        const tooltip = chart
+        const tooltip = d3.select("chart")
             .append("div")
             .style("position", "absolute")
             .style("color", "white")
@@ -29,25 +29,74 @@
             .style("width", "200px")
             .text("");
             
-        const scaleRadius = d3.scaleSqrt().domain([51,1]).range([1,50]) 
+        const scaleRadius = d3.scaleSqrt().domain([150,1]).range([1,33]) 
         
         //widith is vertical down the page
-        var forceX = d3.forceX(width / 2).strength(0.05)
+        var forceX = d3.forceX(width / 2.7).strength(0.05)
         var forceY = d3.forceY(height / 2).strength(0.05)
         var forceCollide = d3.forceCollide(function(d){
             return scaleRadius(d.Rank) + 3
         });
         var forceRanks = d3.forceX(function(d){
-            if(d.Rank <= 10){
+            if(d.Rank < 20){
                 return 200
-            } else if (d.Rank > 10 && d.Rank < 21){
+            } else if (d.Rank >= 20 && d.Rank < 41){
                 return 500
-            } else if (d.Rank >= 21 && d.Rank < 31){
+            } else if (d.Rank >= 41 && d.Rank < 61){
                 return 750
-            } else if (d.Rank >= 31 && d.Rank < 41){
+            } else if (d.Rank >= 61 && d.Rank < 81){
+                return 1000
+            } else if (d.Rank >= 81 && d.Rank < 101){
+                return 1250
+            } else if (d.Rank >= 101 && d.Rank < 121) {
+                return 1500
+            } else if (d.Rank >= 121){
+                return 1500
+            }
+        })
+        var forcePositions = d3.forceX(function(d){
+            if(d.Position === "RB"){
+                return 350
+            } else if (d.Position === "WR"){
+                return 650
+            } else if (d.Position === "QB" ){
                 return 900
-            } else {
-                return 1100
+            } else if (d.Position === "TE" ){
+                return 1050
+            } 
+        })
+        var forceBest = d3.forceX(function(d){
+            if (d.Best < 20) {
+                return 200
+            } else if (d.Best >= 20 && d.Best < 41) {
+                return 500
+            } else if (d.Best >= 41 && d.Best < 61) {
+                return 750
+            } else if (d.Best >= 61 && d.Best < 81) {
+                return 1000
+            } else if (d.Best >= 81 && d.Best < 101) {
+                return 1250
+            } else if (d.Best >= 101 && d.Best < 121) {
+                return 1500
+            } else if (d.Best >= 121) {
+                return 1500
+            }
+        })
+        var forceFloor = d3.forceX(function(d){
+            if (d.Worst < 20) {
+                return 200
+            } else if (d.Worst >= 20 && d.Worst < 41) {
+                return 500
+            } else if (d.Worst >= 41 && d.Worst < 61) {
+                return 750
+            } else if (d.Worst >= 61 && d.Worst < 81) {
+                return 1000
+            } else if (d.Worst >= 81 && d.Worst < 101) {
+                return 1250
+            } else if (d.Worst >= 101 && d.Worst < 121) {
+                return 1500
+            } else if (d.Worst >= 121) {
+                return 1500
             }
         })
         //.strength(1.5)
@@ -100,11 +149,30 @@
             .style("fill", function (d) {
                 return colorCircles(d[bubbleColor])
             })
+            // debugger
             d3.select("#Ranking").on('click', function(){
                 simulation.force("x", forceRanks)
-                .alphaTarget(1.2)
+                .alphaTarget(0.45)
                 // .restart()
                 console.log("10 button works")
+            })
+            d3.select("#Best").on('click', function(){
+                simulation.force("x", forceBest)
+                .alphaTarget(0.45)
+                // .restart()
+                console.log("ceiling button works")
+            })
+            d3.select("#Worst").on('click', function(){
+                simulation.force("x", forceFloor)
+                .alphaTarget(0.45)
+                // .restart()
+                console.log("floor button works")
+            })
+            d3.select("#Position").on('click', function(){
+                simulation.force("x", forcePositions)
+                .alphaTarget(0.45)
+                // .restart()
+                console.log("position button works")
             })
             // d3.select("#top_twenty").on('click', function(){
             //     simulation.force("x", forceTopTwenty)
@@ -113,7 +181,7 @@
             d3.select("#Combine").on('click', function(){
                 simulation
                 // .force("xY, d3.forceY(width/2).strength(0.05))
-                .force("x", d3.forceX(width/2).strength(0.05))
+                .force("x", d3.forceX(width/2.7).strength(0.05))
                 // .force("y", d3.forceX(height/1.5)).strength(0.05)
                 .alphaTarget(.05)
                 .restart(forceX)
@@ -127,7 +195,7 @@
 
         // Rank	Name	Team	Position	Bye	Best	Worst	Avg	Std Dev	ADP
             
-        .on("mouseover", function (d) {
+        d3.select("#ToolTip").on("mouseover", function () {
                 tooltip.html(d.Name + "<br>" + "Rank: " + d.Rank + "<br>" 
                      + "Position: " + d.Position + "<br>" 
                      + "Team: " + d.Team + "<br>" 
@@ -137,10 +205,10 @@
                 );
                 return tooltip.style("visibility", "visible");
             })
-            .on("mousemove", function () {
-                return tooltip.style("top", (d3.event.pageY - 90) + "px").style("left", (d3.event.pageX + 10) + "px");
+        d3.select("#ToolTip").on("mousemove", function () {
+                return tooltip.style("top", (d3.event.pageY -90) + "px").style("left", (d3.event.pageX + 10) + "px");
             })
-            .on("mouseout", function () {
+            d3.select("#ToolTip").on("mouseout", function () {
                 return tooltip.style("visibility", "hidden");
             });
     }

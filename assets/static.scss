@@ -8,14 +8,14 @@
 
 }
 
-.player-container{
-    position: flex; /* or absolute */
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    // top: 2%;
-    // left: 19%;
-    // bottom: 20%;
+// .player-container{
+//     position: flex; /* or absolute */
+//     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+//     // top: 2%;
+//     // left: 19%;
+//     // bottom: 20%;
     
-}
+// }
 
 .ranking {
 color: #fff ;
@@ -26,8 +26,35 @@ border-radius: 5px;
 display: inline-block;
 border: none;
 }
+.best {
+color: #fff ;
+text-transform: uppercase;
+background: gray;
+padding: 20px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+}
+.position{
+color: #fff ;
+text-transform: uppercase;
+background: gray;
+padding: 20px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+}
 
 .combine{
+color: #fff;
+text-transform: uppercase;
+background:navy;
+padding: 20px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+}
+.worst{
 color: #fff;
 text-transform: uppercase;
 background:navy;
