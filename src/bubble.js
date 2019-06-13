@@ -32,8 +32,8 @@ function createBubbleChart(width, height) {
 
     const scaleRadius = d3
       .scaleSqrt()
-      .domain([328, 1])
-      .range([1, 30]);
+      .domain([120, 1])
+      .range([1, 20]);
 
     //widith is vertical down the page
     let forceX = d3.forceX(width / 2).strength(0.05);
@@ -43,21 +43,21 @@ function createBubbleChart(width, height) {
     });
     let forceRanks = d3.forceY(function(d) {
       if (d.Rank < 20) {
-        return 150;
+        return 180;
       } else if (d.Rank >= 20 && d.Rank < 41) {
-        return 320;
+        return 340;
       } else if (d.Rank >= 41 && d.Rank < 61) {
         return 470;
       } else if (d.Rank >= 61 && d.Rank < 81) {
         return 580;
       } else if (d.Rank >= 81) {
-        return 680;
+        return 650;
       }
     });
 
     let forcePositions = d3.forceY(function(d) {
       if (d.Position === "RB") {
-        return 150;
+        return 180;
       } else if (d.Position === "WR") {
         return 320;
       } else if (d.Position === "QB") {
@@ -70,20 +70,20 @@ function createBubbleChart(width, height) {
     });
     let forceBest = d3.forceY(function(d) {
       if (d.Best < 20) {
-        return 150;
+        return 180;
       } else if (d.Best >= 20 && d.Best < 41) {
-        return 320;
+        return 340;
       } else if (d.Best >= 41 && d.Best < 61) {
         return 470;
       } else if (d.Best >= 61 && d.Best < 81) {
-        return 580;
+        return 550;
       } else if (d.Best >= 81) {
         return 680;
       }
     });
     let forceFloor = d3.forceY(function(d) {
       if (d.Worst < 20) {
-        return 150;
+        return 180;
       } else if (d.Worst >= 20 && d.Worst < 41) {
         return 320;
       } else if (d.Worst >= 41 && d.Worst < 61) {
@@ -132,7 +132,7 @@ function createBubbleChart(width, height) {
       //when simulation is fed
     }
 
-    const colorCircles = d3.scaleOrdinal(d3.schemeCategory20);
+    const colorCircles = d3.scaleOrdinal(d3.schemeCategory10);
     //ordinal scales have a discrete domain such as a set of names or cateogries
     const node = svg
       .selectAll("circle")
