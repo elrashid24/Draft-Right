@@ -7,6 +7,7 @@
   <svg></svg>
 </div>
 
+
 <div className="buttons">
   <button class="combine" id="Combine">Combine</button>
   <button class="ranking" id="Ranking">Split By Ranking</button>
@@ -25,6 +26,6 @@
     }
     d3.select("#chart")
       .datum(data)
-      .call(createBubbleChart(700, 700));
+      .call(createBubbleChart(700, 800));
   });
 </script>
