@@ -27,8 +27,8 @@ function createBubbleChart(width, height) {
 
     const scaleRadius = d3
       .scaleSqrt()
-      .domain([120, 1])
-      .range([1, 22]);
+      .domain([100, 1])
+      .range([1, 25]);
 
     let forceX = d3.forceX(width / 2).strength(0.05);
     let forceY = d3.forceY(height / 2).strength(0.05);
@@ -51,7 +51,7 @@ function createBubbleChart(width, height) {
 
     let forcePositions = d3.forceY(function(d) {
       if (d.Position === "RB") {
-        return 170;
+        return 140;
       } else if (d.Position === "WR") {
         return 340;
       } else if (d.Position === "QB") {
@@ -62,30 +62,60 @@ function createBubbleChart(width, height) {
         return 650;
       }
     });
-    let forceBest = d3.forceY(function(d) {
-      if (d.Best < 20) {
-        return 180;
-      } else if (d.Best >= 20 && d.Best < 41) {
-        return 340;
+    let forceBestX = d3.forceX(function(d) {
+      if (d.Best < 15) {
+        return 380;
+      } else if (d.Best >= 15 && d.Best < 27) {
+        return 600;
+      } else if (d.Best >= 27 && d.Best < 41) {
+        return 88;
       } else if (d.Best >= 41 && d.Best < 61) {
-        return 470;
+        return 88;
       } else if (d.Best >= 61 && d.Best < 81) {
-        return 580;
-      } else if (d.Best >= 81) {
-        return 680;
+        return 640;
+      } else if (d.Best > 81) {
+        return 600;
       }
     });
-    let forceFloor = d3.forceY(function(d) {
+
+    let forceBestY = d3.forceY(function(d) {
+      if (d.Best < 15) {
+        return 340;
+      } else if (d.Best >= 15 && d.Best < 41) {
+        return 140;
+      } else if (d.Best >= 41 && d.Best < 61) {
+        return 500;
+      } else if (d.Best >= 61 && d.Best < 81) {
+        return 500;
+      } else if (d.Best > 81) {
+        return 130;
+      }
+    });
+
+    let forceFloorY = d3.forceY(function(d) {
       if (d.Worst < 20) {
-        return 180;
+        return 140;
       } else if (d.Worst >= 20 && d.Worst < 41) {
-        return 320;
+        return 500;
       } else if (d.Worst >= 41 && d.Worst < 61) {
-        return 470;
+        return 130;
       } else if (d.Worst >= 61 && d.Worst < 81) {
-        return 580;
+        return 500;
       } else if (d.Worst > 81) {
-        return 650;
+        return 340;
+      }
+    });
+    let forceFloorX = d3.forceX(function(d) {
+      if (d.Worst < 20) {
+        return 140;
+      } else if (d.Worst >= 20 && d.Worst < 41) {
+        return 88;
+      } else if (d.Worst >= 41 && d.Worst < 61) {
+        return 600;
+      } else if (d.Worst >= 61 && d.Worst < 81) {
+        return 640;
+      } else if (d.Worst > 81) {
+        return 380;
       }
     });
 
@@ -145,8 +175,8 @@ function createBubbleChart(width, height) {
       })
       .on("mousemove", function() {
         return tooltip
-          .style("top", d3.event.pageY - 90 + "px")
-          .style("left", d3.event.pageX + 10 + "px");
+          .style("top", d3.event.pageY - 200 + "px")
+          .style("left", d3.event.pageX + 20 + "px");
       })
       .on("mouseout", function() {
         return tooltip.style("visibility", "hidden");
@@ -169,17 +199,18 @@ function createBubbleChart(width, height) {
 
     d3.select("#Worst").on("click", function() {
       simulation
-        .force("y", forceFloor)
+        .force("y", forceFloorY)
         .alphaTarget(0.45)
-        .force("x", d3.forceX(width / 2).strength(0.05));
+        .force("x", forceFloorX)
+        .strength(0.05);
 
       console.log("floor button works");
     });
     d3.select("#Best").on("click", function() {
       simulation
-        .force("y", forceBest)
+        .force("y", forceBestY)
         .alphaTarget(0.45)
-        .force("x", d3.forceX(width / 2).strength(0.05));
+        .force("x", forceBestX);
 
       console.log("floor button works");
     });

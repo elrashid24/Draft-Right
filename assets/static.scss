@@ -1,107 +1,68 @@
-.buttons {
-  position: fixed;
-  // width: 300px;
-  // height: 300px;
-  // background-color: red;
-  // bottom: 0px;
-  // right: 95%;
+.header {
+  font-size: 80px;
 }
-
-.title {
-  font-style: italic;
-  font-size: 70px;
-  position: fixed; /* or absolute */
-  // top: 50%;
-  position: fixed;
-  left: 38%;
-  // display: flex;
-  // justify-content: center;
-  color: whitesmoke;
-  // background-color: purple;
-  background-color: black;
-}
-
-// .player-container{
-//     position: flex; /* or absolute */
-//     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-//     // top: 2%;
-//     // left: 19%;
-//     // bottom: 20%;
-
-// }
 
 .ranking {
   color: #fff;
   text-transform: uppercase;
-  background: gray;
+  background: rgb(250, 48, 48);
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: none;
   position: relative;
+  font-weight: bold;
 }
 .best {
-  color: #fff;
+  color: black;
   text-transform: uppercase;
-  background: gray;
+  background: whitesmoke;
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: none;
+  font-weight: bold;
 }
 .position {
   color: #fff;
   text-transform: uppercase;
-  background: gray;
+  background: rgb(3, 153, 3);
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: none;
+  font-weight: bold;
 }
 
 .combine {
   color: #fff;
   text-transform: uppercase;
-  background: navy;
+  background: rgb(14, 104, 189);
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: none;
+  font-weight: bold;
 }
 .worst {
   color: #fff;
   text-transform: uppercase;
-  background: navy;
+  background: rgb(250, 133, 24);
   padding: 20px;
   border-radius: 5px;
   display: inline-block;
   border: none;
-}
-
-.main {
-  background-color: black;
-}
-
-.chart {
-  background-color: black;
-}
-.chart-example {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0px;
-  background-color: black;
+  font-weight: bold;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
-  background-color: black;
+  margin-top: 0px;
+  margin-left: 20px;
 }
 
-.body {
-  background-color: black;
-}
-
-.html {
-  background-color: black;
+.chart-example {
+  display: flex;
+  justify-content: center;
 }

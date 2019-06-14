@@ -1,13 +1,31 @@
-<link rel="stylesheet" type="text/css" href="./assets/static.scss" />
-
-<h1 className="title">Draft Right</h1>
-<!DOCTYPE html>
-
-<div className="chart-example" class="chart-example" id="chart">
-  <svg></svg>
+<div className="header" style="display: flex; justify-content: center">
+  <h1 style="color:white; font-size: 56px; margin-top: 20px;" className="title">
+    Draft Right
+  </h1>
 </div>
+<body style="background-color: black;">
+  <link rel="stylesheet" type="text/css" href="./assets/static.scss" />
 
+  <!DOCTYPE html>
 
+  <div className="chart-example" class="chart-example" id="chart">
+    <svg></svg>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
+  <script src="./src/bubble.js"></script>
+  <script>
+    d3.csv("../data/fantasy_football.csv", function(error, data) {
+      if (error) {
+        console.error("Error getting or parsing the data.");
+        throw error;
+      }
+      d3.select("#chart")
+        .datum(data)
+        .call(createBubbleChart(800, 700));
+    });
+  </script>
+</body>
 <div className="buttons">
   <button class="combine" id="Combine">Combine</button>
   <button class="ranking" id="Ranking">Split By Ranking</button>
@@ -15,17 +33,3 @@
   <button class="worst" id="Worst">Split By Floor</button>
   <button class="position" id="Position">Split By Position</button>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
-<script src="./src/bubble.js"></script>
-<script>
-  d3.csv("../data/fantasy_football.csv", function(error, data) {
-    if (error) {
-      console.error("Error getting or parsing the data.");
-      throw error;
-    }
-    d3.select("#chart")
-      .datum(data)
-      .call(createBubbleChart(700, 800));
-  });
-</script>
