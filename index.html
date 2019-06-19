@@ -1,5 +1,11 @@
-<div className="header" style="display: flex; justify-content: center">
-  <h1 style="color:white; font-size: 56px; margin-top: 20px;" className="title">
+<div
+  className="header"
+  style="display: flex; justify-content: center; margin-top: 20px;"
+>
+  <h1
+    style="color:whitesmoke; font-size: 66px; font-style: italic; margin-top: 20px;"
+    className="title"
+  >
     Draft Right
   </h1>
 </div>
@@ -10,8 +16,25 @@
 
   <div className="chart-example" class="chart-example" id="chart">
     <svg></svg>
+    <div class="legend1">
+      <h3>Key</h3>
+      <div class="legend1">
+        <p class="position-name"><span class="key-dot rb"></span>Running Back (RB)</p>
+      </div>
+      <div class="legend1">
+        <p class="position-name"><span class="key-dot wr"></span>Wide Receiver (WR)</p>
+      </div>
+      <div class="legend1">
+        <p class="position-name"><span class="key-dot te"></span>Tight End (TE)</p>
+      </div>
+      <div class="legend1">
+        <p class="position-name"><span class="key-dot qb"></span>Quarterback (QB)</p>
+      </div>
+      
+    </div>
   </div>
 
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.min.js"></script>
   <script src="./src/bubble.js"></script>
   <script>
@@ -25,6 +48,7 @@
         .call(createBubbleChart(800, 700));
     });
   </script>
+  
 </body>
 <div className="buttons">
   <button class="combine" id="Combine">Combine</button>
@@ -32,4 +56,6 @@
   <button class="best" id="Best">Split By Ceiling</button>
   <button class="worst" id="Worst">Split By Floor</button>
   <button class="position" id="Position">Split By Position</button>
+  </div>
 </div>
+

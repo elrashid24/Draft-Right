@@ -31,15 +31,15 @@ function createBubbleChart(width, height) {
       .range([1, 25]);
 
     let forceX = d3.forceX(width / 2).strength(0.05);
-    let forceY = d3.forceY(height / 2).strength(0.05);
+    let forceY = d3.forceY(height / 2.6).strength(0.05);
     let forceCollide = d3.forceCollide(function(d) {
-      return scaleRadius(d.Rank) + 1.5;
+      return scaleRadius(d.Rank) + 1.9;
     });
     let forceRanks = d3.forceY(function(d) {
       if (d.Rank < 20) {
-        return 180;
+        return 130;
       } else if (d.Rank >= 20 && d.Rank < 41) {
-        return 340;
+        return 320;
       } else if (d.Rank >= 41 && d.Rank < 61) {
         return 470;
       } else if (d.Rank >= 61 && d.Rank < 81) {
@@ -201,8 +201,7 @@ function createBubbleChart(width, height) {
       simulation
         .force("y", forceFloorY)
         .alphaTarget(0.45)
-        .force("x", forceFloorX)
-        .strength(0.05);
+        .force("x", forceFloorX);
 
       console.log("floor button works");
     });
