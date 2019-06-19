@@ -40,7 +40,7 @@
   <script>
     d3.csv("../data/fantasy_football.csv", function(error, data) {
       if (error) {
-        console.error("Error getting or parsing the data.");
+        console.error(error);
         throw error;
       }
       d3.select("#chart")
