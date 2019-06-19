@@ -2,7 +2,6 @@ function createBubbleChart(width, height) {
   function createBubbles(chart) {
     const bubbleColor = "Position";
     const bubbleRadius = "Rank";
-
     const svg = chart
       .selectAll("svg")
       .attr("width", width)
@@ -21,15 +20,15 @@ function createBubbleChart(width, height) {
       .style("border-radius", "6px")
       .style("text-align", "center")
       .style("font-family", "monospace")
-      .style("width", "200px")
+      .style("width", "300px")
       .style("font-weight", "bold")
+      .style("font-size", "16px")
       .text("");
 
     const scaleRadius = d3
       .scaleSqrt()
       .domain([100, 1])
       .range([1, 25]);
-
     let forceX = d3.forceX(width / 2).strength(0.05);
     let forceY = d3.forceY(height / 2.6).strength(0.05);
     let forceCollide = d3.forceCollide(function(d) {
@@ -37,29 +36,27 @@ function createBubbleChart(width, height) {
     });
     let forceRanks = d3.forceY(function(d) {
       if (d.Rank < 20) {
-        return 130;
+        return 100;
       } else if (d.Rank >= 20 && d.Rank < 41) {
-        return 320;
+        return 280;
       } else if (d.Rank >= 41 && d.Rank < 61) {
-        return 470;
+        return 430;
       } else if (d.Rank >= 61 && d.Rank < 81) {
-        return 580;
+        return 540;
       } else if (d.Rank >= 81) {
-        return 650;
+        return 540;
       }
     });
 
     let forcePositions = d3.forceY(function(d) {
       if (d.Position === "RB") {
-        return 140;
+        return 100;
       } else if (d.Position === "WR") {
-        return 340;
+        return 300;
       } else if (d.Position === "QB") {
-        return 470;
+        return 430;
       } else if (d.Position === "TE") {
-        return 580;
-      } else {
-        return 650;
+        return 520;
       }
     });
     let forceBestX = d3.forceX(function(d) {
@@ -96,7 +93,7 @@ function createBubbleChart(width, height) {
       if (d.Worst < 20) {
         return 140;
       } else if (d.Worst >= 20 && d.Worst < 41) {
-        return 500;
+        return 480;
       } else if (d.Worst >= 41 && d.Worst < 61) {
         return 130;
       } else if (d.Worst >= 61 && d.Worst < 81) {
@@ -109,7 +106,7 @@ function createBubbleChart(width, height) {
       if (d.Worst < 20) {
         return 140;
       } else if (d.Worst >= 20 && d.Worst < 41) {
-        return 88;
+        return 108;
       } else if (d.Worst >= 41 && d.Worst < 61) {
         return 600;
       } else if (d.Worst >= 61 && d.Worst < 81) {
@@ -164,10 +161,10 @@ function createBubbleChart(width, height) {
             "Bye: " +
             d.Bye +
             "<br>" +
-            "Expert's Ceiling: " +
+            "Ceiling: " +
             d.Best +
             "<br>" +
-            "Expert's Floor: " +
+            "Floor: " +
             d.Worst +
             "<br>"
         );
@@ -226,7 +223,7 @@ function createBubbleChart(width, height) {
       simulation
 
         .force("x", d3.forceX(width / 2).strength(0.05))
-        .force("y", d3.forceY(width / 2).strength(0.05))
+        .force("y", d3.forceY(height / 2.6).strength(0.05))
 
         .alphaTarget(0.05);
 
