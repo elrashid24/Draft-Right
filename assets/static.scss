@@ -22,6 +22,8 @@
   display: inline-block;
   border: none;
   font-weight: bold;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 .position {
   color: #fff;
@@ -32,6 +34,8 @@
   display: inline-block;
   border: none;
   font-weight: bold;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .combine {
@@ -43,6 +47,8 @@
   display: inline-block;
   border: none;
   font-weight: bold;
+  margin-left: 120px;
+  margin-right: 40px;
 }
 .worst {
   color: #fff;
@@ -53,14 +59,16 @@
   display: inline-block;
   border: none;
   font-weight: bold;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 0px;
-  margin-left: 50px;
-  align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // margin-top: 0px;
+  // margin-left: 50px;
+  // align-items: center;
 }
 
 .chart-example {
