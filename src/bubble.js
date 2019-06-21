@@ -20,7 +20,7 @@ function createBubbleChart(width, height) {
       .style("border-radius", "6px")
       .style("text-align", "center")
       .style("font-family", "monospace")
-      .style("width", "300px")
+      .style("width", "200px")
       .style("font-weight", "bold")
       .style("font-size", "16px")
       .text("");

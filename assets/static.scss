@@ -63,14 +63,6 @@
   margin-right: 0px;
 }
 
-.buttons {
-  // display: flex;
-  // justify-content: center;
-  // margin-top: 0px;
-  // margin-left: 50px;
-  // align-items: center;
-}
-
 .chart-example {
   display: flex;
   justify-content: center;
@@ -79,15 +71,15 @@ h3 {
   margin-top: 15px;
   background-color: black;
   color: white;
-  font-size: 40px;
+  font-size: 28px;
   font-style: italic;
-  margin-left: 100px;
+  margin-left: 75px;
 }
 .position-name {
   background-color: black;
   color: white;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 15px;
 }
 
 .key-dot {
@@ -105,22 +97,22 @@ h3 {
 
 .rb {
   background: #1f77b4;
-  height: 20;
-  width: 100;
+  height: 16;
+  width: 50;
 }
 .wr {
   background: #ff7f0e;
-  height: 20;
-  width: 100;
+  height: 16;
+  width: 50;
 }
 .qb {
   background: #2ca02c;
-  height: 20;
-  width: 100;
+  height: 16;
+  width: 50;
 }
 .te {
   background: red;
-  height: 20;
-  width: 100;
+  height: 16;
+  width: 50;
   color: white;
 }
