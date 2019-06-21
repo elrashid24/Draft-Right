@@ -16,11 +16,11 @@ function createBubbleChart(width, height) {
       .style("position", "absolute")
       .style("color", "black")
       .style("padding", "8px")
-      .style("background-color", "#EBEDEF")
+      .style("background-color", " #f5f5f5")
       .style("border-radius", "6px")
       .style("text-align", "center")
       .style("font-family", "monospace")
-      .style("width", "200px")
+      .style("width", "150px")
       .style("font-weight", "bold")
       .style("font-size", "16px")
       .text("");
