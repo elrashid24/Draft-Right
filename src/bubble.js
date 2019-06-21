@@ -142,9 +142,7 @@ function createBubbleChart(width, height) {
       .data(player_data)
       .enter()
       .append("circle")
-      .on("click", function(d) {
-        console.log(d);
-      })
+      .on("click", function(d) {})
       .on("mouseover", function(d) {
         tooltip.html(
           d.Name +
@@ -190,8 +188,6 @@ function createBubbleChart(width, height) {
         .force("y", forceRanks)
         .alphaTarget(0.45)
         .force("x", d3.forceX(width / 2).strength(0.05));
-
-      console.log("10 button works");
     });
 
     d3.select("#Worst").on("click", function() {
@@ -199,24 +195,18 @@ function createBubbleChart(width, height) {
         .force("y", forceFloorY)
         .alphaTarget(0.45)
         .force("x", forceFloorX);
-
-      console.log("floor button works");
     });
     d3.select("#Best").on("click", function() {
       simulation
         .force("y", forceBestY)
         .alphaTarget(0.45)
         .force("x", forceBestX);
-
-      console.log("floor button works");
     });
     d3.select("#Position").on("click", function() {
       simulation
         .force("y", forcePositions)
         .alphaTarget(0.45)
         .force("x", d3.forceX(width / 2).strength(0.05));
-
-      console.log("position button works");
     });
 
     d3.select("#Combine").on("click", function() {
@@ -226,8 +216,6 @@ function createBubbleChart(width, height) {
         .force("y", d3.forceY(height / 2.6).strength(0.05))
 
         .alphaTarget(0.05);
-
-      console.log("This Other Button Works");
     });
   }
   return createBubbles;
