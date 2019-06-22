@@ -1,5 +1,5 @@
 # Draft Right
-[Live Demo]https://elrashid24.github.io/Draft-Right/)
+[Live Demo](https://elrashid24.github.io/Draft-Right/)
 
 Draft Right is a website that allows users to interact with data relevant to the top 100 Fantasy Football Players of the upcoming 2019 NFL Season using D3.js. 
 
