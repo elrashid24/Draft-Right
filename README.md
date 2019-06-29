@@ -8,7 +8,7 @@ Draft Right is a website that allows users to interact with data relevant to the
 
 ## Features
 *Animated Bubble Chart: Displays 100 bubbles representing the top 100 NFL players with radii proportional to their projected 2019 statistics 
-Leverages Customized D3.js force functinos to split players by:
+Leverages Customized D3.js force functions to split players by:
 
 * Position:
 
