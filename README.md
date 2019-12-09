@@ -11,32 +11,32 @@ Draft Right is a website that allows users to interact with data relevant to the
 
 Leverages Customized D3.js force functions to split players by:
 
-* Position:
+### Position:
 
 <img width="1440" alt="Screen Shot 2019-06-21 at 10 44 43 PM" src="https://user-images.githubusercontent.com/46327483/59960013-2fc4f700-9476-11e9-8146-1486b6dba154.png">
 
 <img width="448" alt="Screen Shot 2019-12-09 at 2 50 13 PM" src="https://user-images.githubusercontent.com/46327483/70479913-3cc0bb80-1a93-11ea-80f8-41432b8b8913.png">
 
-* Rank: 
+### Rank: 
 
 <img width="1440" alt="Screen Shot 2019-06-21 at 10 40 17 PM" src="https://user-images.githubusercontent.com/46327483/59959988-d5c43180-9475-11e9-9382-77700326876f.png">
 
 <img width="555" alt="Screen Shot 2019-12-09 at 2 51 22 PM" src="https://user-images.githubusercontent.com/46327483/70479963-65e14c00-1a93-11ea-8f6b-088f467e5059.png">
 
-* Ceiling: 
+### Ceiling: 
 
 <img width="1440" alt="Screen Shot 2019-06-21 at 10 40 32 PM" src="https://user-images.githubusercontent.com/46327483/59959997-e5dc1100-9475-11e9-8b8e-1a2dc0cce61a.png">
 
 <img width="554" alt="Screen Shot 2019-12-09 at 2 50 47 PM" src="https://user-images.githubusercontent.com/46327483/70479938-52ce7c00-1a93-11ea-828d-6c3951571e84.png">
 
-<img width="557" alt="Screen Shot 2019-12-09 at 2 52 12 PM" src="https://user-images.githubusercontent.com/46327483/70480021-84474780-1a93-11ea-8e69-a804b7c799f1.png">
+
 
  
-* Floor:
+### Floor:
 
 <img width="1440" alt="Screen Shot 2019-06-21 at 10 48 09 PM" src="https://user-images.githubusercontent.com/46327483/59960053-ae219900-9476-11e9-9a2c-69fff86032c4.png">
 
+<img width="557" alt="Screen Shot 2019-12-09 at 2 52 12 PM" src="https://user-images.githubusercontent.com/46327483/70480021-84474780-1a93-11ea-8e69-a804b7c799f1.png">
 
 
-### Challenges
 
