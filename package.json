@@ -12,6 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "d3-svg-legend": "^2.25.6",
-    "webpack": "^4.31.0"
+    "webpack": "^5.75.0"
   }
 }
